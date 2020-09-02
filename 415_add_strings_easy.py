@@ -1,6 +1,8 @@
 
 
 # Approach 1: Elementary Math
+# Time Complexity: O(max(n1,n2))
+# space complexity: O(max(n1,n2)), because the length of the final string is at most max(n1,n2)+1
 # Here we have two strings as input and asked not to convert them to integers. Digit-by-digit addition is the only option here.
 
 
