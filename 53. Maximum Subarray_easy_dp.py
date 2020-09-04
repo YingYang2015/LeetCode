@@ -1,3 +1,48 @@
+# Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+#
+# Example:
+#
+# Input: [-2,1,-3,4,-1,2,1,-5,4],
+# Output: 6
+# Explanation: [4,-1,2,1] has the largest sum = 6.
+# Follow up:
+#
+# If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+
+# TC: O(n)
+# SC: O(3+n)
+
+class Solution:
+    def maxSubArray(self, nums: list) -> int:
+
+        if len(nums) == 0:
+            return -1
+
+        new_sum = nums[0]
+        max_sum = nums[0]
+
+        for i in range(1, len(nums)):
+            current = nums[i]
+            new_sum = max(new_sum + current, current)
+            max_sum = max(max_sum, new_sum)
+
+        return max_sum
+
+
+def maxSubArray_test():
+    s = Solution()
+    assert s.maxSubArray([0]) == 0
+    assert s.maxSubArray([1,2]) == 3
+    assert s.maxSubArray([])  == -1
+
+if __name__ == '__main__':
+    maxSubArray_test()
+
+
+# divide and concur
+# TC: O(nlogn)
+# SC:
+
 from typing import List
 
 
