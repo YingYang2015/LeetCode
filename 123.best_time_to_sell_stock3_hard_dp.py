@@ -9,7 +9,7 @@
 
 # this version removed i
 # use dynamic programing
-
+# https://tangshusen.me/2019/11/03/Buy-and-Sell-Stock/
 # Step 1: base case
     # 1. 第一天结束，还没有交易：d0[0][0] = 0
     # 2. 第一天结束，买了股票： d1[0][0] = -prices[0]
