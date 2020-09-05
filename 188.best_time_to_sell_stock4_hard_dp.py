@@ -33,6 +33,31 @@
     # result = d0[n-1][k]
 
 
+# 一些note：
+# 1.如果k<=2/n, 有限大的意思，可以把i拿掉，123
+    # 注意base case，看123
+# 2.如果k>2/n 或者无穷大，可以把j拿掉，像122题一样,进一步可以加上如下状态
+    # base case:
+        # d1[0] = -prices[0]
+        # d0[0] = 0
+    # 2.1 加cool period
+        # dp0[i] = max(dp0[i-1], dp1[i-1] + prices[i]); // 保持 or 卖出
+        # dp1[i] = max(dp1[i-1], cool[i-1] - prices[i]); // 保持 or (冷却 -> 买入)
+        # cool[i] = max(cool[i-1], dp0[i-1]); // 第i-1天结束时没有股票说明第i天可以是冷却期
+
+        # 或者
+        # dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])
+        # dp[i][1] = max(dp[i-1][1], dp[i-2][0] - prices[i])
+        # 解释：第 i 天选择 buy 的时候，要从 i-2 的状态转移，而不是 i-1 。
+
+    # 2.2 加fee
+        # dp0[i] = max(dp0[i - 1], dp1[i - 1] + prices[i] - fee);
+        # dp1[i] = max(dp1[i - 1], dp0[i - 1] - prices[i]);
+
+
+
+#
+
 
 
 
