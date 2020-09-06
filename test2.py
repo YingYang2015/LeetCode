@@ -41,3 +41,9 @@ s = Solution()
 numCourses = 5
 prerequisites = [[2,1], [4,2],[3,2], [3,4], [1,0]]
 print(s.findOrder(numCourses, prerequisites))
+
+news = []
+for i in s:
+    print(i, i.isalnum())
+    if i.isalnum():
+       news = news.append(i.lower())
