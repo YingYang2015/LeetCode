@@ -22,7 +22,7 @@
 # return left,
 # 因为插进去最后一个比较的时候，一定是比左边大的，而mid等于left这个时候，所以是left
 
-# TC: O(n)
+# TC: O(logN)
 # SC: O(1)
 
 from typing import List
