@@ -1,13 +1,14 @@
 # Given a collection of intervals, merge all overlapping intervals.
 
-
-
-
 # Step 1: 先把原list 按照lower band都sort了
 # step 2: 遍历每一个list，如果lower band小于前面list的higher band的话，就merge
 
 # TC：O(NlogN + N) -> O(NlogN)： N, list length, 实际上是sort的复杂度
 # SC： O(N)
+
+# 需要注意的
+# 1. sorted function 的用法
+# 2. 一定要按x[0] 排序，因为lower band要从小到大 遍历的
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
