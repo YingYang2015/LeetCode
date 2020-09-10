@@ -23,7 +23,7 @@
 #         # Step 4: transform the min to a list and output.
 # TC: O(nLogK)
 
-# Method 3: divide and conquer
+# Method 3: divide and Conquer
 
 
 # TC: O(NlogN)
@@ -51,7 +51,7 @@ class Solution:
 
         return [i[0] for i in dic.items() if i[1] in l[0:K]]
 
-
+# Method 2: minHeap
 class Solution(object):
     def kClosest(self, points, K):
         # Solution: minheap
