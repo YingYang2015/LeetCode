@@ -2,7 +2,7 @@
 # https://leetcode.com/problems/binary-tree-preorder-traversal/
 # Given a binary tree, return the preorder traversal of its nodes' values.
 
-# preorder: top -> left -> bottom
+# preorder: top -> bottom, left -> right
 
 
 # Solution 1: recursion
@@ -26,7 +26,6 @@ class Solution:
         res = []
         if not root:
             return []
-
         res.append(root.val)
         if root.left is not None:
             res.extend(self.preorderTraversal(root.left))
