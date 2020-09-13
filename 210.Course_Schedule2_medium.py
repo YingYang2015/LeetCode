@@ -89,9 +89,9 @@ class Solution:
             c = i[0]
             graph[p].append(c)
 
+        # loop every course in numCourses, determine if it is a loop
         path = []
         visited = [0] * numCourses
-        # loop every course in numCourses, determine if it is a loop
         for i in range(numCourses):
             if dfs(i) == False:
                 return []
