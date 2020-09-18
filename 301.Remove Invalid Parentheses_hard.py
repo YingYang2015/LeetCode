@@ -1,6 +1,8 @@
 # 301. Remove Invalid Parentheses
 # Remove the minimum number of invalid parentheses in order to make the input string valid. Return all possible results.
 # Note: The input string may contain letters other than the parentheses ( and ).
+# 力扣：https://leetcode-cn.com/problems/remove-invalid-parentheses/solution/bfsjian-dan-er-you-xiang-xi-de-pythonjiang-jie-by-/
+
 
 # Solution: using BFS
 # BFS 想象有不同的层
