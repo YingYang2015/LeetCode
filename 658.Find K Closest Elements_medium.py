@@ -24,7 +24,7 @@ class Solution:
             return [x]
 
         def binary_search(arr, x, s, e):
-            while s < e:
+            while s <= e:
                 mid = (s + e) // 2
                 if x == arr[mid]:
                     return mid
