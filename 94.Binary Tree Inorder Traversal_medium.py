@@ -32,6 +32,7 @@ class Solution:
 # 因此，这里的遍历顺序先沿着最左方向到达最左下角的孩子，然后每次弹出来一个节点，
 # # 把该节点的值放入结果中，并开始处理该节点的右子树
 
+
 class Solution(object):
     def inorderTraversal(self, root):
         """
@@ -40,19 +41,19 @@ class Solution(object):
         """
         stack = []
         answer = []
-
+        node = root
         # while true means it look continues until return answer
         while True:
             # 一直向下走到最左边的node，依次放到堆里
-            while root:
-                stack.append(root)
-                root = root.left
+            while node:
+                stack.append(node)
+                node = node.left
 
             # 如果堆是空的，就return answer了
             if not stack:
                 return answer
 
             # pop出一个来，给result，如果右边还有child，就接着去右边，在右边继续往它自己的左边走
-            root = stack.pop()
-            answer.append(root.val)
-            root = root.right
+            node = stack.pop()
+            answer.append(node.val)
+            node = node.right
