@@ -1,6 +1,9 @@
 # 15. 3Sum
 # 力扣：https://leetcode-cn.com/problems/3sum/solution/san-shu-zhi-he-by-leetcode-solution/
 
+# 自己写了两种写法：
+# 1. twoSum function
+# 2. 不用twoSum function, 用while
 
 # Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0?
 # Find all unique triplets in the array which gives the sum of zero.
@@ -84,6 +87,52 @@ nums = [-1,0,1,2,-1,-4,-2,-3,3,0,4]
 k = 0
 
 print(s.ThreeSum(nums, k))
+
+
+
+# 第二种写法，不用twoSum function，写while
+
+class Solution():
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        # some edge cases:
+        k = 0
+        n = len(nums)
+        if n < 3:
+            return []
+        if n == 3 and sum(nums) == k:
+            return [nums]
+
+        # first sort nums
+        nums.sort()
+
+        ans = []
+        # f: index of the first element
+
+        for f in range(n - 2):
+            if f > 0 and nums[f] == nums[f - 1]:
+                # skip every lines after this, increase f, until the one which is not ths same as before
+                continue
+            # this will be the new target for TwoSum
+            # target = k - nums[f]
+            s = f + 1
+            t = n - 1
+
+            while s < t:
+                if s > f + 1 and nums[s] == nums[s - 1]:
+                    s += 1
+                    continue
+                current_sum = nums[f] + nums[s] + nums[t]
+                if current_sum == k:
+                    ans.append([nums[f], nums[s], nums[t]])
+                    s += 1
+                    t -= 1
+                elif current_sum > k:
+                    t -= 1
+                else:
+                    s += 1
+                # print(s,t)
+        return ans
+
 
 
 

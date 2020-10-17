@@ -2,6 +2,12 @@
 # 找所有的四个数相加=target，不能有重复的
 
 # 力扣：https://leetcode-cn.com/problems/4sum/solution/si-shu-zhi-he-by-leetcode-solution/
+# 自己写了两种写法：
+# 1. twoSum function
+# 2. 不用twoSum function, 用while
+
+
+
 
 # 重点，不要有重复的
 # 注意：第二轮循环的关键，要用 s>f+1, 而不是s>0
@@ -83,4 +89,49 @@ class Solution:
                     if twoSumlist:
                         for i in twoSumlist:
                             ans.append([nums[f], nums[s]] + i)
+        return ans
+
+
+# 第二种写法，不用twoSum function，写while
+
+class Solution:
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+
+        # some edge cases:
+        n = len(nums)
+        if n < 4:
+            return []
+        if n == 4 and sum(nums) == target:
+            return [nums]
+
+        # first sort nums
+        nums.sort()
+        ans = []
+
+        # f: index of the first element
+
+        for f1 in range(n - 2):
+            if f1 > 0 and nums[f1] == nums[f1 - 1]:
+                # skip every lines after this, increase f, until the one which is not ths same as before
+                continue
+            for f2 in range(f1 + 1, n - 1):
+                if f2 > f1 + 1 and nums[f2] == nums[f2 - 1]:
+                    continue
+
+                s = f2 + 1
+                t = n - 1
+
+                while s < t:
+                    if s > f2 + 1 and nums[s] == nums[s - 1]:
+                        s += 1
+                        continue
+                    current_sum = nums[f1] + nums[f2] + nums[s] + nums[t]
+                    if current_sum == target:
+                        ans.append([nums[f1], nums[f2], nums[s], nums[t]])
+                        s += 1
+                        t -= 1
+                    elif current_sum > target:
+                        t -= 1
+                    else:
+                        s += 1
         return ans
