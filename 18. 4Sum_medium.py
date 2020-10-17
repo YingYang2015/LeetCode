@@ -1,3 +1,7 @@
+# 18. 4Sum
+# 找所有的四个数相加=target，不能有重复的
+
+# 力扣：https://leetcode-cn.com/problems/4sum/solution/si-shu-zhi-he-by-leetcode-solution/
 
 # 重点，不要有重复的
 # 注意：第二轮循环的关键，要用 s>f+1, 而不是s>0
