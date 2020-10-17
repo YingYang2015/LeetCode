@@ -9,7 +9,7 @@
 # 3.         if the expression evaluates to the target:
 # 4.             Valid Expression found!
 # 5.     else:
-# 6.         try out operator 'NO OP' and recurse
+# 6.         try out o18perator 'NO OP' and recurse
 # 7.         try out operator * and recurse
 # 8.         try out operator + and recurse
 # 9.         try out operator - and recurse
