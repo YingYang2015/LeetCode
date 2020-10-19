@@ -17,11 +17,9 @@ class Solution:
         # stack: [1,2,3,4,5]
         # start from 5
         ans = cur_node = ListNode()
-
         while stack:
             cur_node.next = ListNode(stack.pop())
             cur_node = cur_node.next
-
         return ans.next
 
 # TC: O(N)
