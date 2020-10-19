@@ -3,13 +3,15 @@
 ### NOTE: 此题不能先找local maximum，
 # 1.我第一次的方法是先找best L, 再找best M， 再反过来找一遍，比较两个sum的大小
 # 但是这样就不对了，
+# 解题思路：
 # 2.应该对每一个possible 的L list，来找前面或者后面的最大的M list !!
 #   We can use prefix sums to calculate any subarray sum quickly.
 #   For each L length subarray,
 #   find the best possible M length subarray that occurs before and after it.
 # 2.1 太慢了，跑不过，算了太多次的 rolling window的 pre和post的max sum O(2N^2)
 # 2.2 优化了一下，把算好的先存起来，memo，rolling window就只算一次
-# DP: O(n)
+# TC: O(n)
+# SC：O(n)
 # Step 1: get the presum, prefix sum
 # Step 2: there are two cases:
 #         1. L on the left, and M on the right
@@ -32,13 +34,16 @@ class Solution():
             preSum[i] = A[i-1] + preSum[i - 1]
 
         # define base status
-        res = preSum[L + M - 1]
-        Lmax = preSum[L - 1]
-        Mmax = preSum[M - 1]
+        res = preSum[L + M]
+        Lmax = preSum[L]
+        Mmax = preSum[M]
 
-        for i in range(L + M, n+1):
+        for i in range(L+M+1, n+1):
+            #站在i往后看，先留出M，然后紧跟着后面的L和原始的Lmax比，哪个大？留出大L
             Lmax = max(Lmax, preSum[i - M] - preSum[i - M - L])
+            #站在i往后看，先留出L，然后紧跟着后面的M和原始的Mmax比，哪个大？留出大L
             Mmax = max(Mmax, preSum[i - L] - preSum[i - M - L])
+            # Lmax + preSum[i] - preSum[i - M], M+后面最大的L
             res = max(res, Lmax + preSum[i] - preSum[i - M],
                       Mmax + preSum[i] - preSum[i - L])
         return res
