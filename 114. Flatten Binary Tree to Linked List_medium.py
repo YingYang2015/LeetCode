@@ -37,6 +37,7 @@ class Solution:
 
 
 # SC是O(1) 的解法
+# 中文力扣：https://leetcode-cn.com/problems/flatten-binary-tree-to-linked-list/solution/er-cha-shu-zhan-kai-wei-lian-biao-by-leetcode-solu/
 # 设置一个cur，一个pre，一个next，cur是当前的node，pre，next是cur.left 刚开始是同一个node
 # 如果cur.left不为空，就进行如下循环，一直到left空了
 
