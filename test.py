@@ -1,17 +1,13 @@
-for letter in 'Python':  # First Example
-    if letter == 'h':
-        pass
-        print('passes')
-    print('Current Letter :', letter)
+x = [['John','john00@mail.com','john_newyork@mail.com','johnsmith@mail.com'],
+    ['Mary','mary@mail.com'],
+    ['John','johnnybravo@mail.com']]
+import collections
 
+dict = collections.defaultdict(list)
 
+dict = {'Name': 'Zabra', 'Age': 7}
+print("Value : %s" %  dict.get('Age'))
+print("Value : %s" %  dict.get('Education'))
 
-var = 10  # Second Example
-while var > 0:
-    print
-    'Current variable value :', var
-    var = var - 1
-    if var == 5:
-        break
-
-print("Good bye!")
+for i in dict.items():
+    print(i)
