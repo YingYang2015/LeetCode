@@ -22,9 +22,6 @@
     # case 2： 但是这会让如果右node有child就第一次进不去
 # Step 2：出堆，然后处理右侧还没进堆的情况，case 2
 
-
-
-
 # Solution 1: Recursion
 
 # Definition for a binary tree node.
@@ -37,7 +34,16 @@ class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
             return []
-        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) +[root.val]
+        res = []
+
+        if root.left:
+            res.extend(self.postorderTraversal(root.left))
+        if root.right:
+            res.extend(self.postorderTraversal(root.right))
+
+        res.append(root.val)
+
+        return res
 
 # Solution 2
 class Solution:
