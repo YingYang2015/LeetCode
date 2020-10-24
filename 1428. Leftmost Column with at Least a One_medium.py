@@ -64,6 +64,7 @@ class Solution:
                 elif binaryMatrix.get(row, mid) == 0:
                     l = mid+1
 
+            # 这是不存在1的情况，全是0
             if l>=n:
                 return -1
             else:
