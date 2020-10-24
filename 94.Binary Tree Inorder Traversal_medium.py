@@ -42,18 +42,16 @@ class Solution(object):
         stack = []
         answer = []
         node = root
-        # while true means it look continues until return answer
-        while True:
+
+        while stack or node:
             # 一直向下走到最左边的node，依次放到堆里
             while node:
                 stack.append(node)
                 node = node.left
 
-            # 如果堆是空的，就return answer了
-            if not stack:
-                return answer
-
             # pop出一个来，给result，如果右边还有child，就接着去右边，在右边继续往它自己的左边走
             node = stack.pop()
             answer.append(node.val)
             node = node.right
+
+        return answer
