@@ -23,7 +23,9 @@ class Solution:
         if k == 0:
             return [x]
 
-        def binary_search(arr, x, s, e):
+        def binary_search(arr, x):
+            s = 0
+            e = len(arr) - 1
             while s <= e:
                 mid = (s + e) // 2
                 if x == arr[mid]:
@@ -34,12 +36,7 @@ class Solution:
                     e = mid - 1
             return s
 
-        ind = binary_search(arr, x, 0, len(arr) - 1)
-
-        left = ind - 1
-        right = ind
-
-        k_in = []
+        ind = binary_search(arr, x)
 
         def get_dis(arr, pos):
             if pos < 0 or pos >= len(arr):
@@ -47,29 +44,22 @@ class Solution:
             else:
                 return abs(arr[pos] - x)
 
-        while left >= 0 or right < len(arr):
-
-            dl = get_dis(arr, left)
-            dr = get_dis(arr, right)
-
+        left, right = ind - 1, ind
+        k_idx = []
+        while (left >= 0 or right < len(arr)) and len(k_idx) < k:
+            dl, dr = get_dis(arr, left), get_dis(arr, right)
             if dl < dr:
-                k_in.append(left)
+                k_idx.append(left)
                 left -= 1
             elif dl > dr:
-                k_in.append(right)
+                k_idx.append(right)
                 right += 1
             elif dl == dr:
-
-                while dl == dr and k > len(k_in):
-                    k_in.append(left)
+                while dl == dr and k > len(k_idx):
+                    k_idx.append(left)
                     left -= 1
                     dl = get_dis(arr, left)
 
-                if k > len(k_in):
-                    k_in.append(right)
-                    right += 1
+        k_idx.sort()
+        return [arr[i] for i in k_idx]
 
-            if len(k_in) == k:
-                output_l = [arr[i] for i in k_in]
-                output_l.sort()
-                return output_l
