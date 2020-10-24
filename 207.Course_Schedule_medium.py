@@ -17,7 +17,8 @@
 
 # Solution 2: DFS
 # 实际上DFS快很多
-
+# TC: O(n)：访问了每一个node一次
+# SC: O(n)
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         graph = collections.defaultdict(list)
@@ -55,7 +56,7 @@ class Solution:
     # 2: 拜访过了，后面没有loop，是成功的
     # step 3: 从每一个点开始，一直往下走，如果下面的点的visited = 1，那就是当前正在visit的点，是loop。遇到0可继续往下走，遇到2，return true，直到遍历结束
 
-# TC: O(n^2)
+# TC: O(n)
 # SC: O(n)
 
 class Solution:

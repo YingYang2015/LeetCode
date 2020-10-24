@@ -57,7 +57,7 @@ class Solution:
     # 2: 拜访过了，后面没有loop，是成功的
     # step 3: 从每一个点开始，一直往下走，如果下面的点的visited = 1，那就是当前正在visit的点，是loop。遇到0可继续往下走，遇到2，return true，直到遍历结束
 
-# TC: O(n^2)
+# TC: O(n)：访问了每一个node一次
 # SC: O(n)
 
 # 注意：要return path[::-1], 因为在recursion的过程中，每一次是append的最后一个node
