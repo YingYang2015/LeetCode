@@ -36,14 +36,12 @@ class Solution:
             for j in range(n):
                 if indegrees[j] == 0:
                     zerodegree = 1
+                    indegrees[j] = -1
+                    for c in graph[j]:
+                        indegrees[c] -= 1
                     break
 
-            if zerodegree:
-                indegrees[j] = -1
-
-                for c in graph[j]:
-                    indegrees[c] -= 1
-            else:
+            if not zerodegree:
                 return False
 
         return True

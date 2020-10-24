@@ -1,5 +1,9 @@
-#
-# There is a new alien language which uses the latin alphabet. However, the order among letters are unknown to you. You receive a list of non-empty words from the dictionary, where words are sorted lexicographically by the rules of this new language. Derive the order of letters in this language.
+# 269 Alien dictionary
+# There is a new alien language which uses the latin alphabet.
+# However, the order among letters are unknown to you.
+# You receive a list of non-empty words from the dictionary,
+# where words are sorted lexicographically by the rules of this new language.
+# Derive the order of letters in this language.
 
 ### 注意答案怎么建bfs的
 # 主要问题： 我自己写的，BFS写的是对的， 但是前面graph建的不对
