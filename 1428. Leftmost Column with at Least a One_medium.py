@@ -54,18 +54,20 @@ class Solution:
 
         def binary_search(binaryMatrix, row):
             n = len(s)
-            r = n
             l = 0
-            while l < mid:
+            r = n-1
+
+            while l <= mid:
                 mid = (l+r)//2 # odd: mid index: # even: the bigger one in two middle ones
                 if binaryMatrix.get(row, mid) == 1:
-                    r = mid
+                    r = mid-1
                 elif binaryMatrix.get(row, mid) == 0:
-                    l = mid
-            if binaryMatrix.get(row, r) == 0:
+                    l = mid+1
+
+            if l>n:
                 return -1
             else:
-                return r
+                return l
 
         n, m = BinaryMatrix.dimensions()
         min_c = -1
