@@ -5,9 +5,12 @@ import collections
 
 dict = collections.defaultdict(list)
 
-dict = {'Name': 'Zabra', 'Age': 7}
+dict1 = {'Name': 'Zabra', 'Age': 7}
 print("Value : %s" %  dict.get('Age'))
 print("Value : %s" %  dict.get('Education'))
 
 for i in dict.items():
     print(i)
+
+dict1 = {'Name': 'Zabra', 'Age': 7}
+dict2 = {'Age': 7, 'Name': 'Zabra', }
