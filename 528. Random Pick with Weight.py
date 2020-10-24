@@ -12,31 +12,31 @@
 # 因为每一个区间的长度不同，就代表了probability
 
 class Solution:
-
     def __init__(self, w: List[int]):
-
         self.pre_sum_list = []
         pre_sum = 0
-
         for i in range(len(w)):
             pre_sum += w[i]
             self.pre_sum_list.append(pre_sum)
-
         self.w = w
         self.total_sum = pre_sum
 
     def pickIndex(self) -> int:
-        # 注意：两种generation都可以
-        # num = random.randint(1, self.total_sum)
-        num = self.total_sum * random.random()
+        num = random.randint(1, self.total_sum)
+        # num = self.total_sum * random.random()
         l = 0
-        r = len(self.pre_sum_list)
+        r = len(self.pre_sum_list) - 1
 
-        while l < r:
+        while l <= r:
             mid = int((l + r) / 2)
             if num > self.pre_sum_list[mid]:
                 l = mid + 1
-            if num <= self.pre_sum_list[mid]:
-                r = mid
+            if num < self.pre_sum_list[mid]:
+                r = mid - 1
+            if num == self.pre_sum_list[mid]:
+                return mid
 
         return l
+
+
+
