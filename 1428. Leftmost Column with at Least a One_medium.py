@@ -64,7 +64,7 @@ class Solution:
                 elif binaryMatrix.get(row, mid) == 0:
                     l = mid+1
 
-            if l>n:
+            if l>=n:
                 return -1
             else:
                 return l
