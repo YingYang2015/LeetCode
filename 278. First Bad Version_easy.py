@@ -26,6 +26,28 @@ class Solution:
 
         l = 0
         r = n - 1
+
+        while l <= r:
+            mid = int((l + r) / 2)
+            if isBadVersion(mid):
+                r = mid - 1
+            elif isBadVersion(mid) == False:
+                l = mid + 1
+
+        return l
+
+# OR
+class Solution:
+    def firstBadVersion(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n <= 1:
+            return n
+
+        l = 0
+        r = n - 1
         mid = int((l + r) / 2)
 
         while l <= r:
