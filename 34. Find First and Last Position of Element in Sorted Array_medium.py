@@ -37,10 +37,13 @@ class Solution:
 
             return l
 
+        # return一个ind，可能是满足target的人任意坐标
         ind = binary_search(nums, target)
 
+        # 这是target比所有值都大的情况
         if ind >= len(nums):
             return [-1, -1]
+        #  这是target在中间，但是不存在的情况，可以插入在这
         if nums[ind] != target:
             return [-1, -1]
 
