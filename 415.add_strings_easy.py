@@ -15,29 +15,20 @@
 
 class Solution:
     def addStrings(self, num1: str, num2: str) -> str:
-        res = []
-        carry = 0
+        res, carry = [], 0
+        n1, n2= len(num1)-1, len(num2)-1
 
-        n1 = len(num1)-1
-        n2 = len(num2)-1
-
-        while (n1>=0 or n2>=0):
+        while n1>=0 or n2>=0 or carry>0:
             r1 = ord(num1[n1]) - ord('0') if n1>=0 else 0
             r2 = ord(num2[n2]) - ord('0') if n2>=0 else 0
 
             value = (r1 + r2 + carry)%10
             carry = (r1 + r2 + carry)//10
-
             res.append(value)
-
             n1 -= 1
             n2 -= 1
 
-        if carry != 0:
-            res.append(carry)
-
         res = res[::-1]
-
         return ''.join(str(i) for i in res)
 
 
