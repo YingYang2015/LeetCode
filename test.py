@@ -14,3 +14,8 @@ for i in dict.items():
 
 dict1 = {'Name': 'Zabra', 'Age': 7}
 dict2 = {'Age': 7, 'Name': 'Zabra', }
+
+
+for i in t1:
+    print(i)
+    new_t1 += i
