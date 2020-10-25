@@ -1,9 +1,21 @@
-# How:
+# Given a string, find the length of the longest substring T that contains at most k distinct characters.
+#
+# Example 1:
+#
+# Input: s = "eceba", k = 2
+# Output: 3
+# Explanation: T is "ece" which its length is 3.
+# Example 2:
+#
+# Input: s = "aa", k = 1
+# Output: 2
+# Explanation: T is "aa" which its length is 2.
+
+# 解题思路
 # have a left and right pointer, starting from 0
 # move right first
     # if the number of disctinct character n<=k, keep moving right
     # if n>k, move left to reduce it to k
-
 
 # How to move the left curve
 # Method 1:
@@ -14,7 +26,7 @@
     # then remove this key value pare from hashmap: del hashmap[s[index]]
 
 # TC: O(N)
-# SC: O(1)
+# SC: O(k)
 # Method 1 快
 # Method 2:
     # also use hashmap, which keeps the letters of the current substring
@@ -25,7 +37,7 @@
     # calculate n
 
 # TC: O(N)
-# SC: O(1)
+# SC: O(k)
 
 # method 1:
 
@@ -39,35 +51,19 @@ class Solution:
         if n <= 1:
             return n
 
-        left = 0
-        right = 0
-
+        left, right, max_len = 0,0,0
         hashmap = defaultdict()
-        max_len = 0
 
         # 注意这个部分，要先把right + 1，然后再check
-
         while left < n and right < n:
             hashmap[s[right]] = right
             right += 1
-
             if len(hashmap) > k:
                 index = min(hashmap.values())
                 del hashmap[s[index]]
                 left = index + 1
-
             max_len = max(max_len, right - left)
-
         return max_len
-
-
-
-
-
-
-
-
-
 
 
 
@@ -78,26 +74,19 @@ class Solution:
         # two pointers,
         # one in the front moving forward when n<=K
         # one in the back, moving forward when n>k
-
         n = len(s)
-
         if k == 0:
             return 0
-
         if n <= 1:
             return n
 
-        p1 = 0
-        p2 = 0
-        max_len = 0
+        p1, p2, max_len = 0,0,0
 
         dic = collections.defaultdict(int)
-
         dic[s[0]] = 1
         num_char = len(dic)
 
         while p1 < n and p2 < n:
-
             if num_char <= k:
                 max_len = max(max_len, len(s[p1:p2 + 1]))
                 p2 += 1
@@ -108,6 +97,6 @@ class Solution:
                 if 0 in list(dic.values()):
                     dic.pop(list(dic.keys())[list(dic.values()).index(0)])
                 p1 += 1
-
             num_char = len(dic)
+
         return max_len
