@@ -34,6 +34,8 @@ class WordDictionary:
     def addWord(self, word: str) -> None:
         current = self.root
         for w in word:
+            if w not in current.children.keys():
+                current.children[w] = Node()
             current = current.children[w]
         current.isword = True
 
