@@ -13,31 +13,24 @@ class Solution:
         s = s.replace(' ', '')
         if s[-1] == ')':
             s = s+'e'
-        print(s)
         stack = []
         sign = '+'
 
         ops = ['+', '-', '*', '/', ')', 'e']
         num = 0
-        num_p = 0
-        sign_p = []
+        # 这是处理'('是第一个的情况
+        sign_p = ['+']
 
         for i in range(len(s)):
-            print(stack, s[i], num, sign)
             if s[i] not in ops and s[i] not in ['(', ')']:
                 num = num * 10 + int(s[i])
-                # print(num, sign)
 
             if s[i] == '(':
                 stack.append(s[i])
-                if i-1>=0 and s[i - 1] != '(':
-                        sign_p.append(s[i - 1])
-                else:
-                    sign_p.append('+')
-
-                sign = '+'
-                num = 0
-                print('sign_p', sign_p)
+                if i>0:
+                    sign_p.append(s[i - 1])
+                # 如果是‘（’ 相当于括号里重新算，所以sign和num都要初始
+                sign, num = '+', 0
 
             if s[i] in ops or i == len(s) - 1:
                 if sign == '+':
@@ -50,19 +43,15 @@ class Solution:
                 elif sign == '/':
                     tmp = int(stack.pop() / num)
                     stack.append(tmp)
-
-                sign = s[i]
-                num = 0
+                #如果是正常的加减乘除，就重新给num 0， 如果是'('，num就是括号里计算出来的值
+                sign, num = s[i],0
 
                 if s[i] == ')':
-                    t = 0
-                    while t != '(':
-                        num = num + int(t)
+                    while stack[-1] != '(':
                         t = stack.pop()
+                        num += t
+                    stack.pop()
                     sign = sign_p.pop()
-
-                    print(sign)
-
         res = sum(stack)
 
         return res
