@@ -12,8 +12,34 @@
 # Output: "10101"
 
 # Solution: element wise sum
-# TC: O(max(M, N))
-# SC: O(max(M, N))
+# Time Complexity: O(max(n1,n2))
+# space complexity: O(max(n1,n2)), because the length of the final string is at most max(n1,n2)+1
+# Here we have two strings as input and asked not to convert them to integers. Digit-by-digit addition is the only option here.
+
+
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        res, carry = [], 0
+        n1, n2 = len(a) - 1, len(b) - 1
+
+        while n1 >= 0 or n2 >= 0 or carry > 0:
+            r1 = ord(a[n1]) - ord('0') if n1 >= 0 else 0
+            r2 = ord(b[n2]) - ord('0') if n2 >= 0 else 0
+
+            value = (r1 + r2 + carry) % 2
+            carry = (r1 + r2 + carry) // 2
+
+            res.append(str(value))
+            n1 -= 1
+            n2 -= 1
+
+        res = res[::-1]
+        # print(res)
+        return ''.join(res)
+
+
+
+
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
         n = max(len(a), len(b))
