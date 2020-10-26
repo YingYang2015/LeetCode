@@ -13,7 +13,6 @@ class Node():
         self.children = collections.defaultdict(Node)
         self.isword = False
 
-
 class Trie:
 
     def __init__(self):
@@ -29,6 +28,8 @@ class Trie:
         """
         current = self.root
         for w in word:
+            if w not in current.children.keys():
+                current.children[w] = Node()
             current = current.children[w]
         current.isword = True
 
@@ -41,7 +42,6 @@ class Trie:
             current = current.children.get(w)
             if current == None:
                 return False
-
         return current.isword
 
     def startsWith(self, prefix: str) -> bool:
