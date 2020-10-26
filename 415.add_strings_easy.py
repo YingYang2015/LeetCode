@@ -51,32 +51,27 @@ if __name__ == '__main__':
 # then report the data
 
 class Solution:
-    def addStringsInt(self, num1: str, num2: str) -> str:
-        res = []
-        carry = 0
+    class Solution:
+        def addStringsInt(self, num1: str, num2: str) -> str:
+            res, carry = [], 0
+            n1, n2 = len(num1) - 1, len(num2) - 1
 
-        n1 = len(num1) - 1
-        n2 = len(num2) - 1
-
-        while (n1 >= 0 or n2 >= 0):
-
-            if ([num1[n1] if n1>=0 else []] != ['.']) and ([num2[n2] if n2>=0 else []] != ['.']):
-                    r1 = ord(num1[n1]) - ord('0') if n1 >= 0 else 0
-                    r2 = ord(num2[n2]) - ord('0') if n2 >= 0 else 0
+            while n1 >= 0 or n2 >= 0 or carry > 0:
+                num1_val = num1[n1] if n1 >= 0 else '0'
+                num2_val = num2[n2] if n2 >= 0 else '0'
+                if num1_val != '.' and num2_val != '.':
+                    r1 = ord(num1_val) - ord('0')
+                    r2 = ord(num2_val) - ord('0')
                     value = (r1 + r2 + carry) % 10
                     carry = (r1 + r2 + carry) // 10
-            else:
-                value = '.'
-            res.append(value)
-            n1 -= 1
-            n2 -= 1
+                else:
+                    value = '.'
+                res.append(value)
+                n1 -= 1
+                n2 -= 1
 
-        if carry != 0:
-            res.append(carry)
-
-        res = res[::-1]
-
-        return ''.join(str(i) for i in res)
+            res = res[::-1]
+            return ''.join(str(i) for i in res)
 
     def addStrings(self, num1: str, num2: str) -> str:
 
