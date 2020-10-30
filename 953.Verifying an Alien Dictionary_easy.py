@@ -8,7 +8,6 @@
 # 之前想过先对比在letter level，是不对的，因为必须要先第一个小于第二个才可以
 # 几个rule：
     # 1.要先对比letter，一直一样的话，最后看长度
-
 # TC: O(n*m)
 # SC: O(1)
 
@@ -24,7 +23,6 @@ class Solution:
         # step 1: get a dictionary
         #order = '0' + order
         letter_ord = {order[i]: i for i in range(len(order))}
-        max_n = max([len(w) for w in words])
 
         for i in range(len(words)-1):
             word1 = words[i]
@@ -38,8 +36,6 @@ class Solution:
                     return False
                 if o1 < o2:
                     break
-
-            print('here')
             if o1 == o2 and len(word1) > len(word2):
                 return False
 
